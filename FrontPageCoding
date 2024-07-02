@@ -1,0 +1,54 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class FrontPageCoding {
+    private JFrame frame;
+    private JPanel panel;
+    private JButton proceedButton;
+
+    public FrontPageCoding() {
+        frame = new JFrame("Gardenia Stocks Checking System");
+        // Set frame size
+        frame.setSize(450, 350);
+        // Close operation on exit
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Set main panel
+        panel = new JPanel();
+        // Set panel layout
+        panel.setLayout(new BorderLayout());
+
+        // Setup welcoming label
+        JLabel greetingLabel = new JLabel("Welcome to Gardenia Stocks Checking System!");
+        greetingLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        greetingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(greetingLabel, BorderLayout.NORTH);
+
+        // Set up welcoming logo
+        ImageIcon logo = new ImageIcon("/Users/adam/Downloads/gardenia-logo-.png"); // Update path as needed
+        JLabel logoLabel = new JLabel(logo);
+        panel.add(logoLabel, BorderLayout.CENTER);
+
+        proceedButton = new JButton("Proceed");
+        proceedButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    new GardeniaManagementSystem();
+                }
+            });
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(proceedButton);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Add panel to frame and make it visible    
+        frame.add(panel);
+        frame.setVisible(true);
+        frame.setResizable(false);
+    }
+
+    // Create an instance of FrontPageCoding to start the application
+    public static void main(String[] args) {
+        new FrontPageCoding();
+    }
+}
